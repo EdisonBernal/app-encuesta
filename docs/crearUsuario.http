@@ -1,0 +1,8 @@
+POST http://localhost:5000/usuarios
+content-Type: application/json
+
+{
+    "nombres": "Winston Merchancano",
+    "email": "winstonmerchancano2020@itp.edu.co",
+    "contrasena": "123"
+}

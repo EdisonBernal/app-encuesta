@@ -1,0 +1,8 @@
+PUT http://localhost:5000/encuesta/1
+content-Type: application/json
+
+{
+    "nombre": "prueba update encuesta2",
+    "descrip": "prueba de actualizacion de encuesta 1",
+    "imagen": ""
+}
