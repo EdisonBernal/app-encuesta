@@ -10,17 +10,17 @@ CREATE TABLE `encuesta` (
   `idenc` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(250) NOT NULL,
   `descrip` varchar(250) NOT NULL,
-  `imagen` varchar(250) DEFAULT NULL,
+  `img` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`idenc`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS preguntas;
 CREATE TABLE `preguntas` (
   `idpreg` int(11) NOT NULL AUTO_INCREMENT,
-  `tipopreg` varchar(250) NOT NULL,
-  `pregunta` text NOT NULL,
+  `tipopreg` char(3) NOT NULL DEFAULT '',
+  `pregunta` varchar(2000) NOT NULL,
   PRIMARY KEY (`idpreg`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS respuestas;
 CREATE TABLE `respuestas` (
@@ -28,7 +28,7 @@ CREATE TABLE `respuestas` (
   `idusu` int(11) NOT NULL,
   `idpreg` int(11) NOT NULL,
   `idenc` int(11) NOT NULL,
-  `resp` text NOT NULL,
+  `resp` varchar(2000) NOT NULL,
   PRIMARY KEY (`idres`),
   KEY `FK_resultado_usuario` (`idusu`),
   KEY `FK_resultado_preguntas` (`idpreg`),
@@ -44,5 +44,6 @@ CREATE TABLE `usuario` (
   `nombre` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
   `contrasena` varchar(250) NOT NULL,
-  PRIMARY KEY (`idusu`)
+  PRIMARY KEY (`idusu`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
