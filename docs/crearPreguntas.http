@@ -1,0 +1,7 @@
+POST http://localhost:5000/preguntas
+content-Type: application/json
+
+{
+    "tipopreg": "MMR",
+    "pregunta": "Prueba de pregunta 2"
+}

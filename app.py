@@ -132,5 +132,56 @@ def eliminarEncuesta(id):
         "mensaje": "Encuesta eliminada correctamente"                      
     })
 
+@app.post('/preguntas')
+def CrearPreguntas():
+    
+    datos = request.json
+    cursor = db.cursor()
+    cursor.execute('''INSERT INTO preguntas(tipopreg,pregunta) 
+        VALUES(%s,%s)''',(
+        datos['tipopreg'],
+        datos['pregunta'],        
+        ))
+
+    db.commit()
+
+    return jsonify({
+        "mensaje": "Pregunta creada exitosamente"
+    })
+
+@app.get('/preguntas')
+def listarPreguntas():
+    cursor = db.cursor(dictionary=True)
+
+    cursor.execute('select * from preguntas')
+    preguntas = cursor.fetchall()
+    return jsonify(preguntas)
+
+@app.post('/respuestas')
+def CrearRespuesta():
+    
+    datos = request.json
+    cursor = db.cursor()
+    cursor.execute('''INSERT INTO respuestas(idusu,idpreg,idenc,resp) 
+        VALUES(%s,%s,%s,%s)''',(
+        datos['idusu'],
+        datos['idpreg'],
+        datos['idenc'],
+        datos['resp'],        
+        ))
+
+    db.commit()
+
+    return jsonify({
+        "mensaje": "Respuesta creada exitosamente"
+    })
+
+@app.get('/respuestas')
+def listarRespuestas():
+    cursor = db.cursor(dictionary=True)
+
+    cursor.execute('select * from respuestas')
+    respuestas = cursor.fetchall()
+    return jsonify(respuestas)
 
 app.run(debug=True)

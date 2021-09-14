@@ -1,0 +1,9 @@
+POST http://localhost:5000/respuestas
+content-Type: application/json
+
+{
+    "idusu": 1,
+    "idpreg": 5,
+    "idenc": 1,
+    "resp": "Prueba de respuesta 1"
+}
