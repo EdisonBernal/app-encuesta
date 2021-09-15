@@ -43,6 +43,14 @@ def ListarUsuarios():
     usuarios = cursor.fetchall()
     return jsonify(usuarios)
 
+@app.get('/usuarios/<id>')
+def usuarioId(id):
+    cursor = db.cursor(dictionary=True)
+
+    cursor.execute('select * from usuario WHERE idusu =%s',(id,))
+    usuarioId = cursor.fetchall()
+    return jsonify(usuarioId)
+
 
 @app.put('/usuarios/<id>')
 def actualizarUsuario(id):
@@ -101,6 +109,14 @@ def listarEncuestas():
     encuesta = cursor.fetchall()
     return jsonify(encuesta)
 
+@app.get('/encuesta/<id>')
+def encuestaId(id):
+    cursor = db.cursor(dictionary=True)
+
+    cursor.execute('select * from encuesta WHERE idenc =%s',(id,))
+    encuestaId = cursor.fetchall()
+    return jsonify(encuestaId)
+    
 @app.put('/encuesta/<id>')
 def actualizarEncuesta(id):
     datos = request.json

@@ -2,7 +2,7 @@ POST http://localhost:5000/encuesta
 content-Type: application/json
 
 {
-    "nombre": "Encuesta2",
-    "descrip": "Prueba de encuesta 2",
-    "imagen": "img2"
+    "nombre": "Encuesta4",
+    "descrip": "Prueba de encuesta 4",
+    "imagen": "img4"
 }
