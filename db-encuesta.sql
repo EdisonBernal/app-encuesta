@@ -10,9 +10,17 @@ CREATE TABLE `encuesta` (
   `idenc` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(250) NOT NULL,
   `descrip` varchar(250) NOT NULL,
-  `img` varchar(250) DEFAULT NULL,
+  `imagen` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`idenc`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS grupo_trabajo;
+CREATE TABLE `grupo_trabajo` (
+  `idgrupo` smallint(6) NOT NULL DEFAULT 0,
+  `nomgrupo` varchar(250) NOT NULL,
+  `codgrupo` varchar(250) NOT NULL,
+  PRIMARY KEY (`idgrupo`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS preguntas;
 CREATE TABLE `preguntas` (
@@ -20,7 +28,7 @@ CREATE TABLE `preguntas` (
   `tipopreg` char(3) NOT NULL DEFAULT '',
   `pregunta` varchar(2000) NOT NULL,
   PRIMARY KEY (`idpreg`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS respuestas;
 CREATE TABLE `respuestas` (
@@ -36,7 +44,7 @@ CREATE TABLE `respuestas` (
   CONSTRAINT `FK_resultado_encuesta` FOREIGN KEY (`idenc`) REFERENCES `encuesta` (`idenc`),
   CONSTRAINT `FK_resultado_preguntas` FOREIGN KEY (`idpreg`) REFERENCES `preguntas` (`idpreg`),
   CONSTRAINT `FK_resultado_usuario` FOREIGN KEY (`idusu`) REFERENCES `usuario` (`idusu`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS usuario;
 CREATE TABLE `usuario` (
@@ -46,4 +54,4 @@ CREATE TABLE `usuario` (
   `contrasena` varchar(250) NOT NULL,
   PRIMARY KEY (`idusu`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
